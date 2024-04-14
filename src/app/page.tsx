@@ -1,5 +1,7 @@
 import { UserButton, currentUser } from "@clerk/nextjs";
-import { Button, Input } from "antd";
+import { connectMongoDB } from "./config/db";
+
+connectMongoDB();
 
 export default async function Home() {
   let clerkUserId = "";
@@ -7,7 +9,7 @@ export default async function Home() {
   let email = "";
 
   const currentUserData = await currentUser();
-  console.log(currentUserData);
+  // console.log(currentUserData);
   if (currentUserData) {
     clerkUserId = currentUserData.id;
     name = currentUserData.firstName + " " + currentUserData.lastName;
@@ -15,8 +17,8 @@ export default async function Home() {
   }
 
   return (
-    <div className='flex flex-col items-center justify-center h-screen gap-5'>
-      <h1 className='text-3xl text-gray-500 font-bold'>Hotely</h1>
+    <div className='text-sm flex flex-col gap-5 p-5'>
+      <h1 className='text-3xl text-gray-500 font-bold'>Homepage</h1>
       <h1>Cler user ID : {clerkUserId}</h1>
       <h1>Name: {name}</h1>
       <h1>Email : {email}</h1>
