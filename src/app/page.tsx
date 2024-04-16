@@ -1,11 +1,17 @@
 import { UserButton, currentUser } from "@clerk/nextjs";
 import { connectMongoDB } from "../config/db";
 import { GetCurrentUserFromMongoDB } from "@/server-actions/users";
+import { userType } from "@/interfaces";
 
 connectMongoDB();
 
 export default async function Home() {
-  const mongoUser: any = await GetCurrentUserFromMongoDB();
+  const response: any = await GetCurrentUserFromMongoDB();
+  let mongoUser: userType | null = null;
+
+  if (response.success) {
+    mongoUser = response.data;
+  }
   let clerkUserId = "";
   let name = "";
   let email = "";
@@ -14,8 +20,8 @@ export default async function Home() {
   // console.log(currentUserData);
   if (mongoUser) {
     clerkUserId = mongoUser.clerkUserId;
-    name = mongoUser.data.name;
-    email = mongoUser.data.email;
+    name = mongoUser.name;
+    email = mongoUser.email;
   }
 
   return (
