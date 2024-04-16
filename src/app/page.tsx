@@ -1,19 +1,21 @@
 import { UserButton, currentUser } from "@clerk/nextjs";
-import { connectMongoDB } from "./config/db";
+import { connectMongoDB } from "../config/db";
+import { GetCurrentUserFromMongoDB } from "@/server-actions/users";
 
 connectMongoDB();
 
 export default async function Home() {
+  const mongoUser: any = await GetCurrentUserFromMongoDB();
   let clerkUserId = "";
   let name = "";
   let email = "";
 
-  const currentUserData = await currentUser();
+  // const currentUserData = await currentUser();
   // console.log(currentUserData);
-  if (currentUserData) {
-    clerkUserId = currentUserData.id;
-    name = currentUserData.firstName + " " + currentUserData.lastName;
-    email = currentUserData.emailAddresses[0].emailAddress;
+  if (mongoUser) {
+    clerkUserId = mongoUser.clerkUserId;
+    name = mongoUser.data.name;
+    email = mongoUser.data.email;
   }
 
   return (
