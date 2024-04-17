@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;1,500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -21,12 +22,12 @@
   align-items: center;
 }
 .cl-internal-b3fm6y {
-    display: none !important;
+  display: none !important;
 }
 .cl-card {
-    border-radius: 4px !important;
+  border-radius: 4px !important;
 }
 
 .cl-formButtonPrimary {
-    background-color: black !important;
+  background-color: black !important;
 }
