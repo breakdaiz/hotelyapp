@@ -31,7 +31,7 @@ function LayoutProvider({ children }: { children: ReactNode }) {
   });
   return (
     <div>
-      <Header />
+      <Header loggedInUserData={loggedInUserData} />
       {children}
     </div>
   );
