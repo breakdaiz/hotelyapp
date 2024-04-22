@@ -25,7 +25,7 @@ export const GetCurrentUserFromMongoDB = async () => {
     // if user does not exist in the database create a new user and return
     const newUser = new UserModel({
       name:
-        currentUserFromClerk?.firstName + " " + currentUserFromClerk?.lastName,
+     currentUserFromClerk?.firstName + " " + currentUserFromClerk?.lastName,
       email: currentUserFromClerk?.emailAddresses[0].emailAddress,
       clerkUserId: currentUserFromClerk?.id,
       profilePic: currentUserFromClerk?.imageUrl,
