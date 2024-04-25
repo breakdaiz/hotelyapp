@@ -13,7 +13,7 @@ function LayoutProvider({ children }: { children: ReactNode }) {
     null
   );
 
-  const [loading, setLoading]= useState(true);
+  const [loading, setLoading] = useState(true);
 
   const pathName = usePathname();
   const isAuthRoute =
@@ -33,7 +33,6 @@ function LayoutProvider({ children }: { children: ReactNode }) {
       message.error(error.message);
     } finally {
       setLoading(false);
-
     }
   };
 
@@ -47,12 +46,12 @@ function LayoutProvider({ children }: { children: ReactNode }) {
     return children;
   }
   if (loading) {
-    return <Spinner fullHeight={true}/>
+    return <Spinner fullHeight={true} />;
   }
   return (
     <div>
       <Header loggedInUserData={loggedInUserData} />
-      {children}
+      <div className='lg:px-20 mt-5'> {children}</div>
     </div>
   );
 }
