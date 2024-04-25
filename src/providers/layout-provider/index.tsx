@@ -6,11 +6,14 @@ import { GetCurrentUserFromMongoDB } from "@/server-actions/users";
 import { message } from "antd";
 import { UserType } from "@/interfaces";
 import { usePathname } from "next/navigation";
+import Spinner from "@/components/spinner";
 
 function LayoutProvider({ children }: { children: ReactNode }) {
   const [loggedInUserData, setLoggedInUserData] = useState<UserType | null>(
     null
   );
+
+  const [loading, setLoading]= useState(true);
 
   const pathName = usePathname();
   const isAuthRoute =
@@ -18,6 +21,7 @@ function LayoutProvider({ children }: { children: ReactNode }) {
 
   const getUserData = async () => {
     try {
+      setLoading(true);
       const response = await GetCurrentUserFromMongoDB();
       if (response.success) {
         setLoggedInUserData(response.data);
@@ -27,6 +31,9 @@ function LayoutProvider({ children }: { children: ReactNode }) {
       }
     } catch (error: any) {
       message.error(error.message);
+    } finally {
+      setLoading(false);
+
     }
   };
 
@@ -38,6 +45,9 @@ function LayoutProvider({ children }: { children: ReactNode }) {
 
   if (isAuthRoute) {
     return children;
+  }
+  if (loading) {
+    return <Spinner fullHeight={true}/>
   }
   return (
     <div>
