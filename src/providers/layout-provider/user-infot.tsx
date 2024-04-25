@@ -8,7 +8,7 @@ import Sidebar from "./sidebar";
 function UserInfo({ loggedInUserData }: { loggedInUserData: UserType }) {
   const [showSideBar, setShowSideBar] = useState(false);
   return (
-    <div className='p-5  border-0 border-solid border-l flex items-center gap-5 '>
+    <div className='p-5  border-0 lg:border-1 border-solid  flex items-center gap-5 '>
       <span className='text-gray-500 text-sm'>{loggedInUserData.name}</span>
       <User
         className='cursor-pointer text-gray-500'
@@ -16,8 +16,10 @@ function UserInfo({ loggedInUserData }: { loggedInUserData: UserType }) {
       />
 
       {showSideBar && (
-        <Sidebar setShowSideBar={setShowSideBar} showSideBar={showSideBar}
-        loggedInUserData={loggedInUserData}
+        <Sidebar
+          setShowSideBar={setShowSideBar}
+          showSideBar={showSideBar}
+          loggedInUserData={loggedInUserData}
         />
       )}
     </div>
