@@ -61,7 +61,7 @@ function Sidebar({
     {
       name: "Hotels",
       icon: <User size={iconSize} />,
-      isActive: pathName === "/admin/hotels",
+      isActive: pathName.includes("/admin/hotels"),
       onClick: () => router.push("/admin/hotels"),
     },
     {
