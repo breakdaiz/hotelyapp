@@ -1,10 +1,14 @@
-import PageTitle from '@/components/page-title'
-import React from 'react'
+import PageTitle from "@/components/page-title";
+import React from "react";
+import HotelForm from "../_common/hotel-form";
 
 function AddHotelPage() {
   return (
-   <PageTitle title='Add Hotel'/>
-  )
+    <div>
+      <PageTitle title='Add Hotel' />
+      <HotelForm />
+    </div>
+  );
 }
 
-export default AddHotelPage
+export default AddHotelPage;
