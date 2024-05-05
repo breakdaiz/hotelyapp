@@ -31,3 +31,12 @@
 .cl-formButtonPrimary {
   background-color: black !important;
 }
+
+.ant-form-item {
+  margin-bottom: 0px !important;
+}
+
+
+.ant-form-item-label {
+  padding: 0px !important;
+}
